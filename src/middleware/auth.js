@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const salt = parseInt(process.env.SALT);
+const User = require("../users/model");
 
 const hashPass = async (req, res, next) => {
     try {
@@ -18,9 +19,15 @@ const hashPass = async (req, res, next) => {
 const comparePass = async (req, res, next) => {
     try {
         //Step 1: find user the username (req.body.username?)
+        const user = await User.findOne({ where: {username: req.body.username}});
         //Step 2: compare the plaintext password with the hashed password on the DB
+        const fact = await bcrypt.compare(req.body.password, user.password);
         //Step 3: if false, send response "passwords do not match" - just if
+        if (!fact) {
+            return res.status(401).json({message: "incorrect password"});
+        };
         //Step 4: if true, attach user to body
+        req.user = user;
         //Step 5: next function i.e, next(); 
         next();
     } catch (error) {
