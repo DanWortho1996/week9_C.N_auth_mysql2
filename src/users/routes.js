@@ -1,7 +1,7 @@
 const {Router} = require("express");
 const userRouter = Router();
 
-const {addUser, login, allUsers, oneUser} = require("./controllers");
+const {addUser, login, allUsers, oneUser, userDel} = require("./controllers");
 const {hashPass, comparePass} = require("../middleware/auth");
 
 //user signup
@@ -15,5 +15,8 @@ userRouter.get("/users/allusers", allUsers);
 
 //find one user
 userRouter.get("/users/oneuser/:name", oneUser);
+
+////delete a user
+userRouter.delete("/users/deleteuser/", userDel);
 
 module.exports = userRouter;
