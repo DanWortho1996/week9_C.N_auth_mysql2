@@ -1,7 +1,8 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 
-// const exampleRouter = require("./middlewareExample");
+//const exampleRouter = require("./middlewareExample");
 const User = require("./users/model");
 
 const userRouter = require("./users/routes");
@@ -12,6 +13,8 @@ const app = express();
 
 //Using this allows us to access and use json data
 app.use(express.json());
+
+app.use(cors());
 
 app.use(userRouter);
 

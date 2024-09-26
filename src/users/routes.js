@@ -16,7 +16,7 @@ userRouter.get("/users/allusers", allUsers);
 //find one user
 userRouter.get("/users/oneuser/:name", oneUser);
 
-////delete a user
+//delete a user
 userRouter.delete("/users/deleteuser/", userDel);
 
 module.exports = userRouter;

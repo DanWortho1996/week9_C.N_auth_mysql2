@@ -44,7 +44,7 @@ const oneUser = async (req, res) => {
     }
 };
 
-//extra work but worth it to figure out how to print out user deletion. give it a go.
+//extra work but worth it to figure out how to print out user deletion.
 //Delete Method on ThunderClient
 const userDel = async (req, res) => {
     const user = await User.destroy({where: {username: req.body.username}});
@@ -54,6 +54,8 @@ const userDel = async (req, res) => {
         res.status(501).json({message: error.message, error: error});
     }
 };
+
+
 
 module.exports = {
     addUser: addUser,
