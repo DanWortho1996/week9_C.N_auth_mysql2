@@ -17,7 +17,7 @@ const addUser = async (req, res) => {
 //Post Method on ThunderClient
 const login = async (req, res) => {
     try {
-        res.status(201).json({message: "success", user: req.user.username});
+        res.status(201).json({message: "success", user: req.user});
     } catch (error) {
         res.status(501).json({message: error.message, error: error});
     }
