@@ -25,9 +25,9 @@ const login = async (req, res) => {
 
 //Get Method on ThunderClient
 const allUsers = async (req, res) => {
-    const user = await User.findAll({});
+    const users = await User.findAll({});
     try {
-        res.status(200).json({message: "success, here is a list of all the users", users: user});
+        res.status(200).json({message: "success, here is a list of all the users", users: users});
     } catch (error) {
         res.status(501).json({message: error.message, error: error});
     }
